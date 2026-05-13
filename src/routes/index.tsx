@@ -801,7 +801,7 @@ function Home() {
               }}
             >
               {[
-                { num: "500+", label: "Clientes" },
+                { num: "500+", label: "Clientes diariamente" },
                 { num: "1k+", label: "Reparos" },
                 { num: "5", label: "Anos" },
                 { num: "4.9★", label: "Avaliação" },
