@@ -27,16 +27,12 @@ function isStoreOpen(): boolean {
 function StoreStatus() {
   const open = isStoreOpen();
   return (
-    <div style={{
+    <span style={{
       display: "inline-flex",
       alignItems: "center",
-      gap: "0.5rem",
-      backgroundColor: open ? "rgba(0,200,100,0.12)" : "rgba(255,60,60,0.12)",
-      border: `1px solid ${open ? "rgba(0,200,100,0.35)" : "rgba(255,60,60,0.35)"}`,
-      borderRadius: "2rem",
-      padding: "0.35rem 0.9rem",
+      gap: "0.4rem",
       fontSize: "0.82rem",
-      fontWeight: 700,
+      fontWeight: 600,
       color: open ? "#00c864" : "#ff4444",
     }}>
       <span style={{
@@ -44,9 +40,10 @@ function StoreStatus() {
         backgroundColor: open ? "#00c864" : "#ff4444",
         boxShadow: open ? "0 0 6px #00c864" : "0 0 6px #ff4444",
         display: "inline-block",
+        flexShrink: 0,
       }} />
       {open ? "Aberto agora" : "Fechado agora"}
-    </div>
+    </span>
   );
 }
 
@@ -322,9 +319,9 @@ function Home() {
                 <div key={c.icon} style={{ display: "flex", alignItems: "center", gap: "0.7rem" }}>
                   <span style={{ fontSize: "1.1rem" }}>{c.icon}</span>
                   <span style={{ color: MUTED, fontSize: "0.88rem" }}>{c.text}</span>
+                  {c.icon === "🕐" && <StoreStatus />}
                 </div>
               ))}
-              <StoreStatus />
             </div>
 
             <a
