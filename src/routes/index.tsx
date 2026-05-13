@@ -1039,7 +1039,7 @@ function Home() {
 
           /* Grids */
           .grid-responsive { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
-          .units-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+          .units-grid { grid-template-columns: 1fr 1fr !important; gap: 1rem !important; }
 
           /* Hero */
           #inicio { padding: 90px 1.2rem 3rem !important; min-height: auto !important; }
