@@ -77,7 +77,7 @@ function Divider() {
   );
 }
 
-function NextBtn({ href, label }: { href: string; label: string }) {
+function NextBtn({ href, label, up }: { href: string; label: string; up?: boolean }) {
   return (
     <div style={{ display: "flex", justifyContent: "center", marginTop: "3rem" }}>
       <a
@@ -85,10 +85,17 @@ function NextBtn({ href, label }: { href: string; label: string }) {
         className="btn-primary"
         style={{ borderRadius: "999px", padding: "0.75rem 2rem", fontSize: "0.95rem" }}
       >
+        {up && (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M12 19V5M5 12l7-7 7 7" />
+          </svg>
+        )}
         {label}
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-          <path d="M12 5v14M5 12l7 7 7-7" />
-        </svg>
+        {!up && (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+        )}
       </a>
     </div>
   );
@@ -1001,7 +1008,7 @@ function Home() {
               </div>
             ))}
           </div>
-          <NextBtn href="#inicio" label="Voltar ao início" />
+          <NextBtn href="#inicio" label="Voltar ao início" up />
         </div>
       </section>
 
