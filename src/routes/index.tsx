@@ -369,9 +369,33 @@ function Home() {
           }}
           className="animate-float"
         >
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M12 5v14M5 12l7 7 7-7" />
-          </svg>
+          <a
+            href="#servicos"
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: "44px",
+              height: "44px",
+              borderRadius: "50%",
+              border: `1px solid rgba(0,153,255,0.4)`,
+              color: "#fff",
+              transition: "all 0.3s ease",
+              backgroundColor: "rgba(0,153,255,0.1)",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(0,153,255,0.3)";
+              (e.currentTarget as HTMLElement).style.borderColor = "#0099ff";
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.backgroundColor = "rgba(0,153,255,0.1)";
+              (e.currentTarget as HTMLElement).style.borderColor = "rgba(0,153,255,0.4)";
+            }}
+          >
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M12 5v14M5 12l7 7 7-7" />
+            </svg>
+          </a>
         </div>
       </section>
 
