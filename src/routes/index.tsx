@@ -12,6 +12,44 @@ const CARD2 = "#0f1e36";
 const BORDER = "rgba(0, 153, 255, 0.2)";
 const MUTED = "#94a3b8";
 
+function isStoreOpen(): boolean {
+  const now = new Date();
+  const day = now.getDay(); // 0=dom, 1=seg, ..., 5=sex, 6=sáb
+  const hour = now.getHours();
+  const min = now.getMinutes();
+  const time = hour + min / 60;
+
+  if (day >= 1 && day <= 5) return time >= 7 && time < 18; // seg-sex 7h-18h
+  if (day === 0) return time >= 7 && time < 12;            // dom 7h-12h
+  return false;                                             // sáb fechado
+}
+
+function StoreStatus() {
+  const open = isStoreOpen();
+  return (
+    <div style={{
+      display: "inline-flex",
+      alignItems: "center",
+      gap: "0.5rem",
+      backgroundColor: open ? "rgba(0,200,100,0.12)" : "rgba(255,60,60,0.12)",
+      border: `1px solid ${open ? "rgba(0,200,100,0.35)" : "rgba(255,60,60,0.35)"}`,
+      borderRadius: "2rem",
+      padding: "0.35rem 0.9rem",
+      fontSize: "0.82rem",
+      fontWeight: 700,
+      color: open ? "#00c864" : "#ff4444",
+    }}>
+      <span style={{
+        width: "7px", height: "7px", borderRadius: "50%",
+        backgroundColor: open ? "#00c864" : "#ff4444",
+        boxShadow: open ? "0 0 6px #00c864" : "0 0 6px #ff4444",
+        display: "inline-block",
+      }} />
+      {open ? "Aberto agora" : "Fechado agora"}
+    </div>
+  );
+}
+
 function useSectionAnimations() {
   useEffect(() => {
     const sections = document.querySelectorAll(".animate-section");
@@ -85,15 +123,15 @@ function NextBtn({ href, label, up }: { href: string; label: string; up?: boolea
         className="btn-primary"
         style={{ borderRadius: "999px", padding: "0.75rem 2rem", fontSize: "0.95rem" }}
       >
-        {up && (
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <path d="M12 19V5M5 12l7-7 7 7" />
-          </svg>
-        )}
-        {label}
         {!up && (
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
             <path d="M12 5v14M5 12l7 7 7-7" />
+          </svg>
+        )}
+        {label}
+        {up && (
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <path d="M12 19V5M5 12l7-7 7 7" />
           </svg>
         )}
       </a>
@@ -286,6 +324,7 @@ function Home() {
                   <span style={{ color: MUTED, fontSize: "0.88rem" }}>{c.text}</span>
                 </div>
               ))}
+              <StoreStatus />
             </div>
 
             <a
