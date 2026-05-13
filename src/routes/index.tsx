@@ -495,6 +495,7 @@ function Home() {
           </div>
 
           <div
+            className="units-grid"
             style={{
               display: "grid",
               gridTemplateColumns: "repeat(4, 1fr)",
@@ -1029,15 +1030,53 @@ function Home() {
       </footer>
 
       <style>{`
+        ::placeholder { color: #4a5568; }
+
         @media (max-width: 768px) {
+          /* Navbar */
           .hidden-mobile { display: none !important; }
           .menu-btn { display: flex !important; }
-          .grid-responsive { grid-template-columns: 1fr !important; gap: 2rem !important; }
+
+          /* Grids */
+          .grid-responsive { grid-template-columns: 1fr !important; gap: 1.5rem !important; }
+          .units-grid { grid-template-columns: 1fr !important; gap: 1rem !important; }
+
+          /* Hero */
+          #inicio { padding: 90px 1.2rem 3rem !important; min-height: auto !important; }
+          #inicio h1 { font-size: 2rem !important; text-align: center !important; }
+          #inicio p { text-align: center !important; }
+          #inicio > div > div:first-child { text-align: center !important; align-items: center !important; }
+          #inicio a { width: 100%; justify-content: center !important; }
+
+          /* Seções */
+          #servicos, #unidades, #sobre, #depoimentos {
+            padding: 3.5rem 1.2rem !important;
+          }
+          #unidades { min-height: auto !important; }
+
+          /* Sobre */
+          #sobre > div > div[style] { grid-template-columns: 1fr !important; }
+
+          /* Logo navbar */
+          header img { height: 55px !important; }
+
+          /* Banner CTA */
+          section > div[style*="space-between"] { flex-direction: column !important; align-items: flex-start !important; }
+
+          /* Footer */
+          footer > div > div:first-child { grid-template-columns: 1fr !important; }
+          footer > div > div:last-child { flex-direction: column !important; text-align: center !important; }
+
+          /* NextBtn */
+          .btn-primary, .btn-outline { max-width: 280px; }
+
+          /* Depoimentos e Serviços cards */
+          #servicos [style], #depoimentos [style] { min-width: unset !important; }
         }
+
         @media (min-width: 769px) {
           .menu-btn { display: none !important; }
         }
-        ::placeholder { color: #4a5568; }
       `}</style>
     </div>
   );
