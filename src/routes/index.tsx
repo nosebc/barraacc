@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -11,6 +11,29 @@ const CARD = "#0d1627";
 const CARD2 = "#0f1e36";
 const BORDER = "rgba(0, 153, 255, 0.2)";
 const MUTED = "#94a3b8";
+
+function useSectionAnimations() {
+  useEffect(() => {
+    const sections = document.querySelectorAll(".animate-section");
+    sections.forEach((el) => el.classList.add("section-hidden"));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("section-hidden");
+            entry.target.classList.add("section-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+
+    sections.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+}
 
 function CircuitDecor() {
   return (
@@ -73,6 +96,7 @@ function NextBtn({ href, label }: { href: string; label: string }) {
 
 function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  useSectionAnimations();
 
   return (
     <div style={{ backgroundColor: BG, color: "#fff", minHeight: "100vh" }}>
@@ -355,8 +379,8 @@ function Home() {
       {/* ───── SERVIÇOS ───── */}
       <section
         id="servicos"
+        className="circuit-bg animate-section"
         style={{ padding: "6rem 2rem", position: "relative", overflow: "hidden" }}
-        className="circuit-bg"
       >
         <CircuitDecor />
         <div style={{ maxWidth: "1100px", margin: "0 auto", position: "relative", zIndex: 1 }}>
@@ -496,7 +520,7 @@ function Home() {
 
       <Divider />
       {/* ───── UNIDADES ───── */}
-      <section id="unidades" style={{ padding: "6rem 2rem", position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center" }} className="circuit-bg">
+      <section id="unidades" style={{ padding: "6rem 2rem", position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center" }} className="circuit-bg animate-section">
         <CircuitDecor />
         <div style={{ maxWidth: "1100px", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
@@ -684,6 +708,7 @@ function Home() {
       {/* ───── SOBRE / POR QUE NÓS ───── */}
       <section
         id="sobre"
+        className="animate-section"
         style={{
           padding: "6rem 2rem",
           background: `linear-gradient(180deg, ${BG} 0%, #0b1220 100%)`,
@@ -854,7 +879,7 @@ function Home() {
 
       <Divider />
       {/* ───── DEPOIMENTOS ───── */}
-      <section id="depoimentos" style={{ padding: "6rem 2rem", position: "relative" }} className="circuit-bg">
+      <section id="depoimentos" style={{ padding: "6rem 2rem", position: "relative" }} className="circuit-bg animate-section">
         <CircuitDecor />
         <div style={{ maxWidth: "1100px", margin: "0 auto", position: "relative", zIndex: 1 }}>
           <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
