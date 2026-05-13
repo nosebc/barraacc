@@ -32,6 +32,28 @@ function CircuitDecor() {
   );
 }
 
+function Divider() {
+  return (
+    <div style={{ position: "relative", height: "2px", margin: "0", overflow: "visible" }}>
+      <div style={{
+        height: "1px",
+        background: "linear-gradient(90deg, transparent 0%, rgba(0,153,255,0.5) 30%, rgba(0,153,255,0.8) 50%, rgba(0,153,255,0.5) 70%, transparent 100%)",
+      }} />
+      <div style={{
+        position: "absolute",
+        left: "50%",
+        top: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "8px",
+        height: "8px",
+        borderRadius: "50%",
+        backgroundColor: "#0099ff",
+        boxShadow: "0 0 10px rgba(0,153,255,0.8), 0 0 20px rgba(0,153,255,0.4)",
+      }} />
+    </div>
+  );
+}
+
 function NextBtn({ href, label }: { href: string; label: string }) {
   return (
     <div style={{ display: "flex", justifyContent: "center", marginTop: "3rem" }}>
@@ -329,6 +351,7 @@ function Home() {
         </div>
       </section>
 
+      <Divider />
       {/* ───── SERVIÇOS ───── */}
       <section
         id="servicos"
@@ -427,6 +450,7 @@ function Home() {
         </div>
       </section>
 
+      <Divider />
       {/* ───── BANNER CTA ───── */}
       <section
         style={{
@@ -470,6 +494,7 @@ function Home() {
         </div>
       </section>
 
+      <Divider />
       {/* ───── UNIDADES ───── */}
       <section id="unidades" style={{ padding: "6rem 2rem", position: "relative", minHeight: "100vh", display: "flex", flexDirection: "column", justifyContent: "center" }} className="circuit-bg">
         <CircuitDecor />
@@ -655,6 +680,7 @@ function Home() {
         </div>
       </section>
 
+      <Divider />
       {/* ───── SOBRE / POR QUE NÓS ───── */}
       <section
         id="sobre"
@@ -826,6 +852,7 @@ function Home() {
         </div>
       </section>
 
+      <Divider />
       {/* ───── DEPOIMENTOS ───── */}
       <section id="depoimentos" style={{ padding: "6rem 2rem", position: "relative" }} className="circuit-bg">
         <CircuitDecor />
@@ -927,6 +954,7 @@ function Home() {
       </section>
 
 
+      <Divider />
       {/* ───── FOOTER ───── */}
       <footer
         style={{
