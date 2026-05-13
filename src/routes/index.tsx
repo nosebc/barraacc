@@ -897,9 +897,12 @@ function Home() {
               ))}
             </div>
           </div>
-          <NextBtn href="#depoimentos" label="Depoimentos" />
         </div>
       </section>
+
+      <div style={{ display: "flex", justifyContent: "center", padding: "2rem 0" }}>
+        <NextBtn href="#depoimentos" label="Depoimentos" />
+      </div>
 
       <Divider />
       {/* ───── DEPOIMENTOS ───── */}
